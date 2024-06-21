@@ -1,31 +1,32 @@
+/*Create a function that takes 3 arguments 
+- The fist adn second argument will be a number
+- The third arguemnt will be a math operator (+, -, * , /)
 
-// A word or multiple words wrapped in quotes is called a sting value type
-// a number is called a number value type
-
-    //primative value types
-    //var firstName = "Philip"; //string
-    //var lastName = "Curtis";
-    var age = 30; //number
-    var isADev = true; //boolean
-    var un = undefined; //undefined
-    var n = null; //programmers representation of nothing
-    var notANumber = NaN; //Not a number - provided when you try to process a math equation and result is not a valid number
+Ex: If the operator is a plus then you will add the two numbers together and console log the sum
+*/
 
 
-    var names = ['Phil', 'Bob', 'Neil', 'James', 'Frank']; //called an array
+// Call your function 4 times with different numbers and operators to make sure it works correctly
 
-    var users = ['Bob', 99, 'Ann', 35, 'Billy', 45];
+function calculator (num1, num2, operator) {
+    let answer;
+    if(operator === "+"){
+        answer = num1 + num2;
 
-   function myFirstfunction() {
-    console.log('function has been called');
-   }
+    }else if(operator === "-"){
+        answer = num1 - num2;
 
-   myFirstfunction();
+    }else if(operator === "*"){
+        answer = num1 * num2;
 
-   function printNames (arr) {
-    for(const name of arr){
-        console.log(name);
+    }else if(operator === "/"){
+        answer = num1 / num2;
+
     }
-   };
+    console.log(answer);
+}
 
-   printNames(names);
+calculator(5, 2, "+");
+calculator(9, 4, "-");
+calculator(6, 9, "*");
+calculator(20, 2, "/");
