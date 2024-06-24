@@ -1,24 +1,71 @@
-window //used to interact with the window
-document // used to interact with the html 
+// Target the form 
+const noteForm = document.querySelector('#note-form');
+// Target the note header h3
+const noteHeader = document.querySelector('.note-header');
+//Target container
+const NoteContainer = document.querySelector('.container');
 
-// When the page loads, show a button that the user clicks
-//When the button is clicked, show a prompt for the first name, lastname, and age
-//Store the 3 values to an object
-//Print the data object values to the browser window
 
-// const gatherBtn = document.getElementById("gather-button")
-// can use but query selector allows you to grab any type of css selector
+// A function that is called when the form is submitted
 
-const gatherBtn = document.querySelector("#gather-button");
-const h1 = document.querySelector('h1');
+function createNote (eventObj) {
+    eventObj.preventDefault();
+    noteHeader.innerHTML = 'Your Notes:'
 
-console.log(gatherBtn);
-console.log(gatherBtn.innerText);
+    //grab the note input element
 
-function gatherInfo (){
-    const firstName = prompt('Please enter your first name.');
+    const noteInput = document.querySelector('#note-input');
 
-    console.log(firstName);
+    //get the value(what they put in)
+
+    let noteText = noteInput.value;
+    
+    // Create a date value object
+
+    const dateObj = new Date(); 
+
+    //get the month from data object
+
+    const month = dateObj.getMonth() + 1; //indexing makes jan 0
+
+    //get the date from data object
+
+    const date = dateObj.getDate();
+
+    // get the year from the date object
+
+    const year = dateObj.getFullYear();
+    
+    //combine all of those in a string - 7/24/2024
+
+    const dateStr = `${month}/${date}/${year}`;
+
+    //create an object value with the note text and the current date
+    const noteObj = {
+        text: noteText,
+        date: dateStr
+    };
+    
+
+    //pull the old data from the database(localstoreage) or an empty array if not previous data has been stored
+    
+    const notes = JSON.parse(localStorage.getItem('notes')) || [];
+    console.log(notes);
+
+    //push the notes Obj to the notes array
+
+    notes.push(noteObj);
+
+    //save the notes array to the local storage
+
+    localStorage.setItem('notes', JSON.stringify(notes));
+    
 }
+// Set up and nessessary event listeners that should be listening when page loads
 
-gatherBtn.addEventListener('click', gatherInfo);
+noteForm.addEventListener('submit', createNote);
+
+
+// localStorage.setItem('name', 'Phil');
+
+
