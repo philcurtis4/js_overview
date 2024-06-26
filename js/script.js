@@ -1,8 +1,10 @@
-let count = 10;
+let count = 3;
 const h1 = document.querySelector('h1');
+const modal = document.querySelector('.modal');
+const closeButton = document.querySelector('#close-modal');
 
 function endGame() {
-    h1.innerText = 'Game Over';
+    modal.classList.remove('hide');
 }
 
 
@@ -19,7 +21,17 @@ const interval = setInterval(function () {
     
 }, 1000);
 
+function closeModal() {
+    modal.classList.add('hide');
+};
 
+document.body.addEventListener('click', closeModal);
+
+modal.addEventListener('click', function(eventObj) {
+    eventObj.stopPropagation();
+});
+
+closeButton.addEventListener('click', closeModal);
 
 // setTimeout(function() {
 
