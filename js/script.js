@@ -1,41 +1,29 @@
-let count = 3;
-const h1 = document.querySelector('h1');
-const modal = document.querySelector('.modal');
-const closeButton = document.querySelector('#close-modal');
+//const els = document.querySelectorAll('ul li');
+const ul = document.querySelector('ul');
 
-function endGame() {
-    modal.classList.remove('hide');
+function doSomething(eventObj) {
+    const el = eventObj.target;
+
+    if(el.tagName === 'LI') {
+        eventObj.target.style.background = 'red';
+}
+    console.log(eventObj.target.innerText);
+    // els.forEach(function(li) {
+    //     li.style.background = '#555';
+    // })
+    eventObj.target.style.background = 'red';
 }
 
+// for (const el of els) {
+//     el.addEventListener('click', doSomething)
+// }
 
-const interval = setInterval(function () {
-    count--;
+ul.addEventListener('click', doSomething);
+//eventObj.target is the same as using querySelector grabbing the element
 
-    h1.innerText = `Count: ${count}`;
 
-    if(!count) {
-        clearInterval(interval);
-        endGame();
-    }
+const fruits = ['orange', 'apple', 'grape'];
 
-    
-}, 1000);
-
-function closeModal() {
-    modal.classList.add('hide');
-};
-
-document.body.addEventListener('click', closeModal);
-
-modal.addEventListener('click', function(eventObj) {
-    eventObj.stopPropagation();
+fruits.forEach(function (li, index) {
+    console.log(li, index);
 });
-
-closeButton.addEventListener('click', closeModal);
-
-// setTimeout(function() {
-
-//     console.log('Time is up!');
-// }, 3000);
-
-
