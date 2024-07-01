@@ -1,45 +1,4 @@
 
-/* RESETS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-    color: #444;
-}
-
-html, body {
-    height: 100%;
-}
-
-img {
-    max-width: 100%;
-}
-
-a {
-    text-decoration: none;
-    color: #333;
-}
-
-button {
-    border: none;
-    cursor: pointer;
-}
-/* GLOBAL CLASSES */
-
-.hide{
-    display: none !important;
-}
-
-.text-center{
-    text-align: center;
-}
-
-/* CUSTOM STYLES */
-
-ul li {
-    background: #555;
-    padding: 7px 10px;
-    margin: 5px 0;
-     color: #fff;
+.show {
+    display: initial;
 }
